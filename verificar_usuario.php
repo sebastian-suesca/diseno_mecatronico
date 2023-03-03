@@ -11,9 +11,9 @@ if(isset($_POST)){
 	
 	// Consulta para comprobar las credenciales del usuario
 	$sql = "SELECT * FROM users WHERE email = '$email'";
-	$login = mysqli_query($db, $sql);
+	$login = $conn->query($sql);
 	
-	if($login && mysqli_num_rows($login) == 1){
+	if($login && $login->rowCount() == 1){
 		$usuario = mysqli_fetch_assoc($login);
 		
 		// Comprobar la contraseña
@@ -35,3 +35,5 @@ if(isset($_POST)){
 	}
 	
 }
+
+?>

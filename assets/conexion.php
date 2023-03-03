@@ -1,13 +1,21 @@
 <?php
-$servidor = 'localhost';
-$usuario = 'root';
-$password = '';
-$basededatos = 'campibot';
-$db = mysqli_connect($servidor, $usuario, $password, $basededatos);
-$utf8 = "SET NAMES 'utf8'";
-mysqli_query($db, $utf8);
+$servidor = 'dbcampibot.cz0nydksajbm.us-east-2.rds.amazonaws.com';
+$usuario = 'admin';
+$password = 'campibot_2023';
+$basededatos = 'dbcampibot';
 
 // Iniciar la sesión
 if(!isset($_SESSION)){
     session_start();
 }
+    
+try {
+  $conn = new PDO("mysql:host=$servidor;dbname=$basededatos", $usuario, $password);
+  // configurar el modo de error de PDO a excepción
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  echo "Conexión exitosa a la base de datos";
+} catch(PDOException $e) {
+  echo "Error en la conexión a la base de datos: " . $e->getMessage();
+}
+
+?>

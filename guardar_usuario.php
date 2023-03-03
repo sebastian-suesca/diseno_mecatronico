@@ -11,7 +11,7 @@
     $telefono = trim($_POST["telefono"]);
 
     $sql = "INSERT INTO users VALUES(null, '$nombre', '$email', '$password', '$telefono');";
-    $guardar = mysqli_query($db, $sql);
+    $guardar = $conn->query($sql);
     
     $mensaje = "Usuario registrado exitosamente";
     

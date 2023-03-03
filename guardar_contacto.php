@@ -12,10 +12,12 @@ if(isset($_POST)){
 	$mensaje = trim($_POST["mensaje"]);
 	
 	$sql = "INSERT INTO messages_contact VALUES(null, '$nombre', '$apellido', '$email', '$telefono', '$mensaje');";
-    $guardar = mysqli_query($db, $sql);
+    $guardar = $conn->query($sql);
 
 	$mensaje = "Solicitud de contacto enviada";
 	
 	header("Location: Contacto.php?mensaje=$mensaje");
 	
 }
+
+?>
